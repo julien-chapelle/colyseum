@@ -1,13 +1,15 @@
-<?php require '../controllers/acceuilController.php';?>
+<?php require 'controllers/acceuilController.php';?>
 <!doctype html>
 <html lang="fr">
   <head>
     <meta charset="utf-8">
+    <!-- Logo title -->
+    <link rel="shortcut icon" href="assets/img/logoLhp3Arena.png" class="lhp3LogoTitle" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="../assets/css/acceuil.css">
 
-    <title>Fnac</title>
+    <title>LHP3 Arena</title>
   </head>
   <body>  
   <?php require "header.php"?>

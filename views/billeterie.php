@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="../assets/css/billeterie.css">
 
-    <title>Fnac</title>
+    <title>LHP3 Arena</title>
   </head>
   <body>
   <?php require "header.php"?>
