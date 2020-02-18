@@ -1,4 +1,4 @@
-<?php require '../controllers/adminController.php';?>
+<?php require '../controllers/admin/adminController.php';?>
 <!doctype html>
 <html lang="fr">
   <head>
