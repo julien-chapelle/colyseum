@@ -1,22 +1,56 @@
-<?php require '../controllers/admin/adminController.php';?>
-<!doctype html>
-<html lang="fr">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../assets/css/admin.css">
+<?php
+class Admin extends Database
+{
+    private $idAdmin;
+    private $loginAdmin;
+    private $passwordAdmin;
 
-    <title>Fnac</title>
-  </head>
-  <body>
-  <?php require "header.php"?>
-
-
-    <?php require "footer.php"?>
-
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-  </body>
-</html>
+    public function getIdAdmin()
+    {
+        return $this->idAdmin;
+    }
+    public function setIdAdmin($idAdmin)
+    {
+        $this->idAdmin = $idAdmin;
+    }
+    public function getLoginAdmin()
+    {
+        return $this->loginAdmin;
+    }
+    public function setLoginAdmin($loginAdmin)
+    {
+        $this->loginAdmin = $loginAdmin;
+    }
+    public function getPasswordAdmin()
+    {
+        return $this->passwordAdmin;
+    }
+    public function setPasswordAdmin($passwordAdmin)
+    {
+        $this->passwordAdmin = $passwordAdmin;
+    }
+    public function getAdmin($idAdmin)
+    {
+        $queryAdmin = $this->db->query('SELECT * FROM `colyseum_admin` WHERE `id_Admin` = ' . $idAdmin);
+        return $queryAdmin->fetchAll();
+    }
+    public function connexionAdmin()
+    {
+        $queryAdmin = $this->db->prepare('SELECT * FROM `colyseum_admin` WHERE `login_Admin` = :loginAdmin AND `password_Admin` = :passwordAdmin');
+        $queryAdmin->bindValue(':loginAdmin', $this->getLoginAdmin(), PDO::PARAM_STR);
+        $queryAdmin->bindValue(':passwordAdmin', $this->getPasswordAdmin(), PDO::PARAM_STR);
+        if ($queryAdmin->execute())
+        {
+            foreach ($queryAdmin->fetchAll() as $index => $value)
+            {
+                $this->setIdAdmin($value['id_Admin']);
+            }
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+}
+?>
