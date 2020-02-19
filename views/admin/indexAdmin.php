@@ -39,6 +39,16 @@ require '../../controllers/admin/indexAdminController.php';
                                 <th scope="col">Mail</th>
                             </tr>
                         </thead>
+                        <tbody>
+                            <?php foreach ($listClients as $index => $clients):?>
+                                <tr>
+                                    <td><?=$clients['lastName_CLients']?></td>
+                                    <td><?=$clients['firstName_CLients']?></td>
+                                    <td><?=$clients['birthDate_Clients']?></td>
+                                    <td><?=$clients['mail_Clients']?></td>
+                                </tr>
+                            <?php endforeach;?>
+                        </tbody>
                     </table>
                 </div>
             </div>
@@ -58,6 +68,7 @@ require '../../controllers/admin/indexAdminController.php';
                             <?php foreach ($listContact as $index => $contact):?>
                                 <tr>
                                     <td></td>
+                                    <td></td>
                                 </tr>
                             <?php endforeach;?>
                         </tbody>
@@ -65,9 +76,16 @@ require '../../controllers/admin/indexAdminController.php';
                 </div>
             </div>
         </div>
-        <div class="row justify-content-center">
-            <div class="col-8">
-                <h2 class="text-center">Liste des Spectacles</h2>
+        <div class="row justify-content-center mt-3">
+            <div class="col-10">
+                <div class="row">
+                    <div class="col-4">
+                    <h2 class="text-center">Liste des Spectacles</h2>
+                    </div>
+                    <div class="col-8 text-right">
+                        <a type="button" class="btn btn-sm btn-success" href="addShows.php">Ajouter un spectacle</a>
+                    </div>
+                </div>
                 <div class="table-responsive">
                     <table class="table table-sm">
                         <thead>
@@ -79,8 +97,24 @@ require '../../controllers/admin/indexAdminController.php';
                                 <th scope="col">Durée</th>
                                 <th scope="col">Type</th>
                                 <th scope="col">Genre</th>
+                                <th scope="col" colspan="2">Editer</th>
                             </tr>
                         </thead>
+                        <tbody>
+                            <?php foreach ($listShows as $index => $shows):?>
+                                <tr>
+                                    <td scope="row"><?=$shows['img_Shows']?></td>
+                                    <td><?=$shows['title_Shows']?></td>
+                                    <td><?=$shows['performer_Shows']?></td>
+                                    <td><?=$shows['dateHour_Shows']?></td>
+                                    <td><?=$shows['duration_Shows']?></td>
+                                    <td><?=$shows['types_ShowTypes']?></td>
+                                    <td><?=$shows['name_Genres']?></td>
+                                    <td><a type="button" class="btn btn-sm btn-secondary" href="infoSpectacleAdmin.php?id=<?=$shows['id_Shows']?>">Détails</a></td>
+                                    <td><a type="button" class="btn btn-sm btn-danger">Supprimer</a></td>
+                                </tr>
+                            <?php endforeach;?>
+                        </tbody>
                     </table>
                 </div>
             </div>
