@@ -1,0 +1,29 @@
+<<<<<<< HEAD
+=======
+body{
+    background: url("../img/theater.jpg");
+    background-position: left;
+    background-position: top;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+/* Size logo partenaires */
+.partnerLogo {
+    height: 30px;
+}
+
+/* Size logo partenaires */
+/* Size logo navbar */
+.lhp3Logo {
+    height: 30px;
+}
+
+/* Size logo navbar */
+/* Size logo title */
+.lhp3LogoTitle {
+    height: 16px;
+}
+
+/* Size logo title */
+>>>>>>> 1cf9a09431c6e8e3988ea320b138cef0f13be3ed
