@@ -1,4 +1,4 @@
-<?php require '../controllers/compteController.php'; ?>
+<?php require '../controllers/compteController.php'; var_dump($arrayError) ?>
 <!doctype html>
 <html lang="fr">
 
@@ -28,12 +28,15 @@
           <form method="POST" action="">
             <!-- MAIL -->
             <label for="mailLogin" class="my-2"><i class="fas fa-at"></i> Mail</label>
-            <input type="email" class="form-control" id="mailLogin" name="mailLogin" title="Email de connexion" placeholder="ex: name@example.com" />
+            <input type="email" class="form-control" id="mailLogin" name="mailLogin" title="Email de connexion" placeholder="ex: name@example.com" value="<?= isset($_POST['loginUser']) && !empty($arrayError) ? $_POST['mailLogin'] : '' ?>" />
+            <p class="error"><?= isset($arrayError['mailLogin']) ? $arrayError['mailLogin'] : '' ?></p>
             <!-- PASSWORD -->
             <label for="passwordLogin" class="my-2"><i class="fas fa-unlock-alt"></i> Mot de passe</label>
             <input type="password" class="form-control" id="passwordLogin" name="passwordLogin" title="Mot de passe de connexion" />
+            <p class="error"><?= isset($arrayError['passwordLogin']) ? $arrayError['passwordLogin'] : '' ?></p>
             <!-- SUBMIT -->
             <button class="btn btn-outline-dark shadow my-3" title="Connexion au compte" name="loginUser">Connexion</button>
+            <p class="error"><?= isset($_POST['loginUser']) && !empty($_POST['mailLogin']) && !empty($_POST['passwordLogin']) && isset($arrayError) && !empty($arrayError) ? $arrayError['accountNoExist'] : '' ?></p>
           </form>
           <!-- ADD CLIENT -->
           <a class="text-dark m-2" href="http://colyseumv2/views/addClient.php" title="Lien vers création compte">Vous n'avez pas de compte ?</a>

@@ -128,9 +128,9 @@ class Clients extends Database
 
         $editClientsInfoResult = $this->db->prepare($editClientsInfoQuery);
         $editClientsInfoResult->bindValue(':currentId', $this->getId(), PDO::PARAM_INT);
-        $editClientsInfoResult->bindValue(':lastName', $this->getLastname(), PDO::PARAM_STR);
-        $editClientsInfoResult->bindValue(':firstName', $this->getFirstname(), PDO::PARAM_STR);
-        $editClientsInfoResult->bindValue(':birthDate', $this->getBirthdate(), PDO::PARAM_STR);
+        $editClientsInfoResult->bindValue(':lastname', $this->getLastname(), PDO::PARAM_STR);
+        $editClientsInfoResult->bindValue(':firstname', $this->getFirstname(), PDO::PARAM_STR);
+        $editClientsInfoResult->bindValue(':birthdate', $this->getBirthdate(), PDO::PARAM_STR);
         $editClientsInfoResult->bindValue(':mail', $this->getMail(), PDO::PARAM_STR);
         $editClientsInfoResult->execute();
     }

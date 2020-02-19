@@ -41,9 +41,10 @@ if (empty($arrayError) && isset($_POST['loginUser']) && !isset($e)) {
             $_SESSION['firstname'] = $row['firstName_Clients'];
             $_SESSION['birthdate'] = $row['birthDate_Clients'];
             $_SESSION['mail'] = $row['mail_Clients'];
+            $_SESSION['password'] = $row['password_Clients'];
             header('Location: http://colyseumv2/views/detailClient.php?clientId=' . $_SESSION['id']);
         } else {
-            $userNoExistError = 'Ce compte n\'existe pas, veuillez vérifier vos données de connections ou créez un compte';
+            $arrayError['accountNoExist'] = 'Ce compte n\'existe pas, veuillez vérifier vos données de connections ou créez un compte';
         };
     };
 };

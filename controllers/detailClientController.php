@@ -13,4 +13,8 @@ if (isset($_POST['logoutClient']) && !empty($_SESSION)) {
     session_destroy();
     header('Location: http://colyseumv2/index.php');
 };
+//HOME LOCATION
+if ($_SERVER['PHP_SELF'] == '/views/detailClient.php' && isset($_SESSION) && empty($_SESSION) || isset($_GET['clientId']) && isset($_SESSION) && empty($_SESSION)) {
+    header('Location: http://colyseumv2/index.php');
+};
 ?>

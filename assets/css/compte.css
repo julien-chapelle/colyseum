@@ -31,3 +31,9 @@ body{
     background-color: #ffaa0169;
     border-radius: 10px;
 }
+.error {
+    color: red;
+}
+.validate {
+    color: green;
+}

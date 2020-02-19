@@ -17,27 +17,33 @@
   <?php require "header.php" ?>
   <div class="container-fluid">
     <div class="row justify_content-center">
-      <div class="card m-5 borderRadiusFormLogin">
+      <div class="card m-5 p-2 borderRadiusFormLogin">
         <div class="row no-gutters">
           <div class="col-md-4">
             <!-- CLIENT INFO -->
-            <img src="../assets/img_avatar_choice/man_1.png" class="card-img m-lg-2 m-sm-2" alt="Avatar" title="Avatar" />
+            <img src="../assets/img_avatar_choice/man_1.png" class="card-img m-lg-2 m-sm-2 img-fluid avatarPicSize" alt="Avatar" title="Avatar" />
+            <div class="row">
+              <div class="col">
+                <a href="http://colyseumv2/views/editClient.php?clientId=<?= $_SESSION['id'] ?>" class="text-dark text-right h3 mx-2" title="éditer informations"><i class="fas fa-user-edit"></i></a>
+                <a href="http://colyseumv2/views/deleteClient.php?clientId=<?= $_SESSION['id'] ?>" class="text-dark text-right h3 mx-2" title="Supprimer le compte"><i class="fas fa-user-times"></i></a>
+              </div>
+            </div>
           </div>
-          <div class="col-md-8">
+          <div class="col-md-5 pl-lg-3">
             <div class="card-body">
               <!-- CLIENT INFO -->
-              <h5 class="card-title"><?= $_SESSION['lastname'] . ' ' . $_SESSION['firstname'] ?></h5>
-              <p class="card-text"><?= 'Date de naissance : ' . $_SESSION['birthdate'] ?></p>
-              <p class="card-text"><?= 'Mail : ' . $_SESSION['mail'] ?></p>
+              <h5 class="card-title h3"><?= $_SESSION['lastname'] . ' ' . $_SESSION['firstname'] ?></h5>
+              <p class="card-text h5"><?= 'Date de naissance : ' . $_SESSION['birthdate'] ?></p>
+              <p class="card-text h5"><?= 'Mail : ' . $_SESSION['mail'] ?></p>
             </div>
-            <!-- FORM POST -->
-            <form method="POST" action="">
-              <div class="card-body text-right">
-                <!-- SUBMIT -->
-                <button class="btn btn-outline-dark shadow my-3" title="Déconnexion du compte" name="logoutClient">Déconnexion</button>
-              </div>
-            </form>
           </div>
+          <!-- FORM POST -->
+          <form method="POST" action="">
+            <div class="col-md-3">
+              <!-- SUBMIT -->
+              <button class="btn btn-outline-dark shadow my-3" title="Déconnexion du compte" name="logoutClient">Déconnexion</button>
+            </div>
+          </form>
         </div>
       </div>
     </div>

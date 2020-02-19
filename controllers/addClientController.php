@@ -100,6 +100,6 @@ if (isset($_POST['addClientSubmit']) && empty($arrayError)) {
         $_SESSION['mail'] = $row['mail_Clients'];
     }
     $_SESSION['id'] = $lastId;
-    header('refresh:3;url=http://colyseumv2/views/detailClient.php?client=' . $_SESSION['id']);
+    header('refresh:2;url=http://colyseumv2/views/detailClient.php?client=' . $_SESSION['id']);
 }
 ?>
