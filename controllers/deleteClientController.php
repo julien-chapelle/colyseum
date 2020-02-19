@@ -19,7 +19,9 @@ if (isset($_POST['passwordDeleteConfirm'])) {
     if (empty($_POST['passwordDeleteConfirm'])) {
         $arrayError['passwordDeleteConfirm'] = 'Veuillez remplir le champ';
     };
-    if (password_verify($_POST['passwordDeleteConfirm'], $_SESSION['password']) == 'false') {
+    if (password_verify($_POST['passwordDeleteConfirm'], $_SESSION['password'])) {
+        '';
+    } else {
         $arrayError['passwordDeleteConfirm'] = 'Le mot de passe n\'est pas bon !';
     };
 };

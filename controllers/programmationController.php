@@ -1,9 +1,12 @@
 <?php
 require '../models/Database.php';
-require '../models/Admin.php';
-require '../models/Client.php';
-require '../models/Genre.php';
 require '../models/Show.php';
-require '../models/ShowType.php';
-require '../models/Ticket.php';
+
+$show = new Show();
+$months = $show->toListMonth();
+$shows = $show->toListByMonth();
+if(isset($_POST["search"]) && !empty($_POST["search"])){
+    $search = $_POST["search"];
+    $resultSearch = $show->toSearch($search);
+}
 ?>

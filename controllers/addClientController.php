@@ -88,7 +88,7 @@ if (isset($_POST['addClientSubmit']) && empty($arrayError)) {
     $client->setBirthdate($birthdate);
     $client->setMail($mail);
     $client->setPassword($password);
-    // //Add new client and eturn last insert id for login auto after add
+    // //Add new client and return last insert id for login auto after add
     $lastId = $client->addClients();
     //Clients list for Foreach session create
     $clientList = $client->listClients();
@@ -98,6 +98,7 @@ if (isset($_POST['addClientSubmit']) && empty($arrayError)) {
         $_SESSION['firstname'] = $row['firstName_Clients'];
         $_SESSION['birthdate'] = $row['birthDate_Clients'];
         $_SESSION['mail'] = $row['mail_Clients'];
+        $_SESSION['password'] = $row['password_Clients'];
     }
     $_SESSION['id'] = $lastId;
     header('refresh:2;url=http://colyseumv2/views/detailClient.php?client=' . $_SESSION['id']);
