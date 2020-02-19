@@ -7,7 +7,7 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
-      <a class="nav-item nav-link text-dark" href="../index.php">Accueil</a>
+      <a class="nav-item nav-link text-dark" href="../views/acceuil.php">Accueil</a>
       <a class="nav-item nav-link text-dark" href="../views/programmation.php">Programmation</a>
       <a class="nav-item nav-link text-dark" href="../views/billeterie.php">Billetterie</a>
       <a class="nav-item nav-link text-dark" href="../views/compte.php">Mon compte</a>

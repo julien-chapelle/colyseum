@@ -109,7 +109,7 @@ class Show extends Database
     }
     public function addShows()
     {
-        $queryShows = $this->db->prepare('INSERT INTO `colyseum_shows` (`title_Shows`, `performer_Shows`, `dateHour_Shows`, `duration_Shows`, `id_ShowTypes`, `id_Genres`) VALUE (:titleShows, :performerShows, :dateHourShows, :durationShows, :idShowtypes, :idGenres)');
+        $queryShows = $this->db->prepare('INSERT INTO `colyseum_shows` (`title_Shows`, `performer_Shows`, `dateHour_Shows`, `duration_Shows`, `id_ShowTypes`, `id_Genres`) VALUES (:titleShows, :performerShows, :dateHourShows, :durationShows, :idShowtypes, :idGenres)');
         // $queryShows->bindValue(':imgShows', $this->getImg_Shows(), PDO::PARAM_STR);
         $queryShows->bindValue(':titleShows', $this->getTitle_Shows(), PDO::PARAM_STR);
         $queryShows->bindValue(':performerShows', $this->getPerformer_Shows(), PDO::PARAM_STR);
@@ -134,6 +134,25 @@ class Show extends Database
         }
 
     }
+    public function toSearch($search)
+    {
+        $query_search = 'SELECT colyseum_Shows.img_Shows, colyseum_Shows.title_Shows, 
+        colyseum_Shows.performer_Shows, colyseum_Shows.dateHour_Shows, colyseum_Shows.duration_Shows,
+         colyseum_ShowTypes.types_ShowTypes FROM colyseum_Shows INNER JOIN colyseum_ShowTypes 
+         on colyseum_Shows.id_ShowTypes=colyseum_showtypes.id_ShowTypes WHERE colyseum_Shows.title_Shows
+        LIKE :search';
+
+        $pdoResult = $this->db->prepare($query_search);
+        $pdoResult->bindValue(':search', "%" . $search . "%", PDO::PARAM_STR);
+
+        if ($pdoResult->execute()) {
+            $result = $pdoResult->fetchAll(PDO::FETCH_ASSOC);
+            return $result;
+        } else {
+            echo 'Erreur';
+        }
+
+    }
     public function toListAll()
     {
         $query_all = $this->db->query('SELECT * FROM `colyseum_shows` INNER JOIN `colyseum_showtypes` ON `colyseum_shows`.`id_ShowTypes` = `colyseum_showtypes`.`id_ShowTypes` INNER JOIN `colyseum_genres` ON `colyseum_shows`.`id_Genres` = `colyseum_genres`.`id_Genres`');
@@ -142,7 +161,7 @@ class Show extends Database
     public function toListByMonth()
     {  
         
-       $query_cards = 'SELECT colyseum_Shows.picture_Shows, colyseum_Shows.title_Shows, colyseum_Shows.performer_Shows, colyseum_Shows.dateHour_Shows, colyseum_Shows.duration_Shows, colyseum_ShowTypes.types_ShowTypes, DATE_FORMAT(colyseum_Shows.dateHour_Shows,\'%M\') as `month` FROM colyseum_Shows, colyseum_ShowTypes WHERE colyseum_Shows.id_Shows=colyseum_ShowTypes.id_ShowTypes ';
+       $query_cards = 'SELECT colyseum_shows.img_Shows, colyseum_shows.title_Shows, colyseum_shows.performer_Shows, colyseum_shows.dateHour_Shows, colyseum_shows.duration_Shows, colyseum_showTypes.types_ShowTypes, DATE_FORMAT(colyseum_shows.dateHour_Shows,\'%M\') as `month` FROM colyseum_shows, colyseum_ShowTypes';
 
         $pdoResult = $this->db->prepare($query_cards);
         

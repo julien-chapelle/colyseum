@@ -87,7 +87,7 @@ require '../../controllers/admin/indexAdminController.php';
                     </div>
                 </div>
                 <div class="table-responsive">
-                    <table class="table table-sm">
+                    <table class="table">
                         <thead>
                             <tr>
                                 <th scope="col">Image</th>
@@ -100,10 +100,10 @@ require '../../controllers/admin/indexAdminController.php';
                                 <th scope="col" colspan="2">Editer</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody class="text-center">
                             <?php foreach ($listShows as $index => $shows):?>
                                 <tr>
-                                    <td scope="row"><?=$shows['img_Shows']?></td>
+                                    <td scope="row"><img src="../<?=$shows['img_Shows']?>" class="img-fluid" alt="Affiche du Spectacle" height="35" width="35" /></td>
                                     <td><?=$shows['title_Shows']?></td>
                                     <td><?=$shows['performer_Shows']?></td>
                                     <td><?=$shows['dateHour_Shows']?></td>

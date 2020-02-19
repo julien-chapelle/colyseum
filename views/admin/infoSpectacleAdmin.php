@@ -18,11 +18,30 @@ require '../../controllers/admin/infoSpectacleAdminController.php';
     <?php require '../../views/header.php'?>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-12">
-                <h1 class="text-center">Informations du spectacle</h1>
+            <div class="col-4">
+            </div>
+            <div class="col-4">
+                <h1 class="h3 text-center">Informations du spectacle</h1>
+            </div>
+            <div class="col-3 text-right">
+                <?php if (!isset($_POST['updateShow'])):?>
+                <a type="button" class="btn btn-sm btn-danger" href="indexAdmin.php">Retour</a>
+                <?php else:?>
+                <a type="button" class="btn btn-sm btn-danger"
+                    href="infoSpectacleAdmin.php?id=<?=$ShowManager->getId_Shows()?>">Retour Info</a>
+                <?php endif;?>
             </div>
         </div>
-        <div class="row justify-content-start text-center mt-4 ml-4">
+        <?php if (!isset($_POST['updateShow'])):?>
+        <div class="row ml-2">
+            <div class="col-12">
+                <form method="POST" action="">
+                    <button type="submit" class="btn btn-primary btn-sm" name="updateShow">Modifier le
+                        spectacle</button>
+                </form>
+            </div>
+        </div>
+        <div class="row justify-content-start text-center mt-2 ml-4">
             <div class="col-2 border border-dark">
                 <img src="<?=$ShowManager->getImg_Shows()?>" alt="Affiche du spectacle" class="img-fluid" />
             </div>
@@ -37,13 +56,15 @@ require '../../controllers/admin/infoSpectacleAdminController.php';
                 <form method="POST" action="">
                     <div class="form-row">
                         <?php if (isset($_POST['addTickets'])):?>
-                            <div class="form-group col-4">
-                                <input type="text" class="form-control form-control-sm" name="priceTickets" />
-                            </div>
-                            <div class="form-group col-6">
-                            <a type="button" href="?id=<?=$ShowManager->getId_Shows()?>" class="btn btn-sm btn-secondary">Modifier</a>
-                                <a type="button" href="?id=<?=$ShowManager->getId_Shows()?>" class="btn btn-sm btn-danger">Retour</a>
-                            </div>
+                        <div class="form-group col-4">
+                            <input type="text" class="form-control form-control-sm" name="priceTickets" />
+                        </div>
+                        <div class="form-group col-6">
+                            <a type="button" href="?id=<?=$ShowManager->getId_Shows()?>"
+                                class="btn btn-sm btn-secondary">Modifier</a>
+                            <a type="button" href="?id=<?=$ShowManager->getId_Shows()?>"
+                                class="btn btn-sm btn-danger">Retour</a>
+                        </div>
                         <?php else:?>
                         <button type="submit" class="btn btn-sm btn-secondary" name="addTickets">Modifier prix des
                             tickets</button>
@@ -52,6 +73,34 @@ require '../../controllers/admin/infoSpectacleAdminController.php';
                 </form>
             </div>
         </div>
+        <?php else:?>
+        <div class="row justify-content-center mt-2">
+            <div class="col-5">
+                <div class="card">
+                    <img src="<?=$ShowManager->getImg_Shows()?>" class="card-img-top" alt="Affiche Spectacle">
+                    <form method="POST" action="">
+                        <div class="card-body">
+                            <div class="form-row">
+                            <div class="form-group col-4">
+                                    <label for="durationShow">Durée</label>
+                                    <input type="time" class="form-control form-control-sm" name="durationShow" id="durationShow" />
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-6">
+                                    <label for="titleShow">Titre</label>
+                                    <input type="text" class="form-control form-control-sm" name="titleShow"
+                                        id="titleShow" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <?php endif;?>
     </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

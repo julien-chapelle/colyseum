@@ -90,15 +90,10 @@ class Clients extends Database
         $addClientsResult->bindValue(':firstName', $this->getFirstname(), PDO::PARAM_STR);
         $addClientsResult->bindValue(':birthDate', $this->getBirthdate(), PDO::PARAM_STR);
         $addClientsResult->bindValue(':mail', $this->getMail(), PDO::PARAM_STR);
-<<<<<<< HEAD
-        $addClientsResult->bindValue(':passwords', $this->getMail(), PDO::PARAM_STR);
-        $addClientsResult->execute();
-=======
         $addClientsResult->bindValue(':passwords', $this->getPassword(), PDO::PARAM_STR);
         $addClientsResult->execute();
         $lastId = $this->db->lastInsertId();
         return $lastId;
->>>>>>> 1cf9a09431c6e8e3988ea320b138cef0f13be3ed
     }
     //LIST CLIENT
     public function listClients()
